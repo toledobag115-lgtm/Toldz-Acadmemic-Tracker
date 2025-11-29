@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Tracker Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div id="profile-controls">
+            <select id="profile-select"></select>
+            <button id="profile-settings-btn"><i class="fas fa-cog"></i></button>
+
+            <div id="profile-menu" class="hidden">
+                <button id="add-profile-btn"><i class="fas fa-plus"></i> Create New Profile</button>
+                <button id="rename-profile-btn"><i class="fas fa-pencil-alt"></i> Tweak Name</button>
+                <div class="menu-divider"></div>
+                <button id="export-data-btn"><i class="fas fa-file-export"></i> Export Data (Backup)</button>
+                <button id="import-data-btn"><i class="fas fa-file-import"></i> Import Data (Restore)</button>
+                
+                <div class="menu-divider"></div>
+                <button id="delete-profile-btn" class="danger-action"><i class="fas fa-trash-alt"></i> Delete Profile</button>
+            </div>
+        </div>
+        <h1>Academic Tracker Pro</h1>
+    </header>
+
+    <main>
+        <form id="assessment-form">
+            <input type="text" id="subject" placeholder="Subject (e.g., Quantum Physics)" required>
+            <div id="subject-color-preview" class="subject-color-swatch"></div>
+            
+            <input type="text" id="assessment" placeholder="Assessment Name (e.g., Lab Report Draft)" required>
+            <input type="date" id="deadline" required>
+            <input type="number" id="weighting" placeholder="Weight (%)" min="0" max="100"> 
+            
+            <textarea id="notes" placeholder="Optional: Add assignment brief, links, or context here..."></textarea>
+            
+            <button type="submit">Deploy Assessment</button>
+        </form>
+
+        <div id="reminder-banner" class="hidden">
+            <p id="reminder-message"></p>
+            <button id="reminder-close-btn">Dismiss</button>
+        </div>
+
+        <section id="controls">
+            <div id="tab-controls">
+                <button data-tab="active" class="active">Active</button>
+                <button data-tab="completed">Completed</button>
+                <button data-tab="all">All</button>
+            </div>
+            <div id="filter-controls">
+                <input type="text" id="search-input" placeholder="Search assessments...">
+                <select id="subject-filter">
+                    <option>All Subjects</option>
+                    </select>
+            </div>
+        </section>
+
+        <div id="view-toggle">
+            <button data-view="list" class="active"><i class="fas fa-list"></i> List View</button>
+            <button data-view="calendar"><i class="fas fa-calendar-alt"></i> Calendar View</button>
+        </div>
+
+        <div class="view-container active" id="list-view">
+            <table id="assessment-table">
+                <thead>
+                    <tr>
+                        <th data-column="subject">Subject <i class="fas fa-sort"></i></th>
+                        <th data-column="assessment">Assessment</th>
+                        <th data-column="deadline" class="sort-active sort-asc">Deadline <i class="fas fa-sort-down"></i></th>
+                        <th data-column="weighting">Weight (%) <i class="fas fa-sort"></i></th>
+                        <th>Notes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="view-container" id="calendar-view">
+            <div id="calendar-header">
+                <button id="prev-month-btn"><i class="fas fa-chevron-left"></i></button>
+                <h2 id="current-month-year"></h2>
+                <button id="next-month-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div id="calendar-grid">
+                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+                </div>
+        </div>
+    </main>
+
+    <input type="file" id="import-file" accept="application/json" style="display: none;">
+    <script src="script.js"></script>
+</body>
+</html>

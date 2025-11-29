@@ -1,0 +1,554 @@
+/* --- Global Styles --- */
+body {
+    /* Updated font stack for a cleaner look */
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Lighter background */
+    color: #212529; /* Darker, more readable text */
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    /* Stronger, more defined shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em; /* Slightly larger title */
+    font-weight: 700;
+}
+
+main {
+    padding: 25px 20px; /* Increased padding */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+button {
+    /* Base style */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    cursor: pointer;
+    font-weight: 600; 
+    font-size: 0.95em;
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother cubic transition */
+    white-space: nowrap; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    outline: none;
+}
+
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+button:active {
+    background-color: #004085;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(0); 
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Profile Controls --- */
+#profile-controls {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#profile-select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #0056b3;
+    background-color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #007bff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+#profile-settings-btn {
+    padding: 8px 10px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: 1em;
+    box-shadow: none; /* Keep icon button cleaner */
+    transform: none;
+}
+
+#profile-settings-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    transform: none;
+}
+
+#profile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+    background-color: white;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    min-width: 240px;
+}
+
+#profile-menu button {
+    background: none;
+    color: #495057;
+    text-align: left;
+    padding: 12px 15px;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    transition: background-color 0.1s;
+}
+
+#profile-menu button:hover {
+    background-color: #e9ecef;
+}
+
+#profile-menu .menu-divider {
+    height: 1px;
+    background-color: #e9ecef;
+    margin: 5px 0;
+}
+
+.danger-action {
+    color: #dc3545 !important;
+}
+
+.danger-action:hover {
+    background-color: #f8d7da !important;
+}
+
+/* --- Assessment Form --- */
+#assessment-form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Defined form box */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    align-items: flex-start; /* Align fields to the top */
+}
+
+#assessment-form input[type="text"], 
+#assessment-form input[type="date"], 
+#assessment-form input[type="number"],
+#assessment-form textarea {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px; /* Increased padding */
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#assessment-form input:focus,
+#assessment-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Notes Field */
+#assessment-form textarea {
+    flex: 1 1 100%; 
+    min-height: 80px;
+}
+
+#assessment-form button {
+    padding: 12px 25px;
+    min-width: 150px;
+    align-self: center; /* Center the submit button */
+}
+
+/* --- Controls/Filters --- */
+#controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#tab-controls button {
+    background-color: transparent;
+    color: #495057;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 8px 15px;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    transition: border-bottom-color 0.2s, color 0.2s;
+}
+
+#tab-controls button:hover {
+    background-color: #f8f9fa;
+    border-bottom-color: #adb5bd;
+    box-shadow: none;
+    transform: none;
+}
+
+#tab-controls button.active {
+    color: #007bff;
+    border-bottom: 3px solid #007bff;
+    background-color: transparent;
+}
+
+#filter-controls {
+    display: flex;
+    gap: 10px;
+}
+
+#filter-controls input, #filter-controls select {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+}
+
+/* --- Table Styles --- */
+#assessment-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+#assessment-table th, #assessment-table td {
+    padding: 14px 18px; /* Increased padding */
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0; /* Lighter rule */
+}
+
+#assessment-table thead th {
+    background-color: #e9ecef; /* Light gray header */
+    color: #343a40;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+#assessment-table thead th i {
+    margin-left: 5px;
+    color: #adb5bd;
+}
+
+#assessment-table thead th.sort-active i {
+    color: #343a40;
+}
+
+#assessment-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Table Action Button Overrides (smaller, cleaner look) */
+#assessment-table tbody td button {
+    padding: 6px 12px; 
+    margin-right: 5px;
+    font-size: 0.8em;
+    border-radius: 4px; 
+    box-shadow: none; 
+    transform: none;
+}
+
+.complete-btn {
+    background-color: #28a745; 
+}
+.complete-btn:hover {
+    background-color: #1e7e34;
+}
+.edit-btn {
+    background-color: #6c757d; 
+    color: white;
+}
+.edit-btn:hover {
+    background-color: #5a6268;
+}
+.delete-btn {
+    background-color: #dc3545; 
+}
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* --- Calendar View --- */
+#view-toggle {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#view-toggle button {
+    background-color: #e9ecef;
+    color: #495057;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    margin-right: 5px;
+    box-shadow: none;
+    transform: none;
+}
+
+#view-toggle button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.view-container {
+    display: none;
+    transition: opacity 0.3s;
+}
+
+.view-container.active {
+    display: block;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0; 
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#calendar-header button {
+    background: none;
+    color: #007bff;
+    box-shadow: none;
+    padding: 5px 10px;
+    font-size: 1.2em;
+}
+
+#calendar-header button:hover {
+    background-color: #e9ecef;
+    transform: none;
+}
+
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+}
+
+#calendar-grid > div {
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    min-height: 90px; /* Taller cells */
+    box-sizing: border-box;
+    font-size: 0.9em;
+    position: relative;
+    overflow: hidden;
+}
+
+#calendar-grid > div:nth-child(-n + 7) {
+    font-weight: bold;
+    text-align: center;
+    background-color: #f1f3f5; /* Slightly darker day header */
+}
+
+.current-month {
+    background-color: #ffffff;
+}
+
+.today {
+    background-color: #e6f7ff; /* Light blue */
+    border: 2px solid #007bff !important;
+}
+
+.task-marker {
+    display: block;
+    font-size: 0.75em;
+    padding: 2px 5px;
+    margin-top: 3px;
+    border-radius: 3px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+/* --- NEW FEATURE STYLES --- */
+
+/* Reminder Banner */
+#reminder-banner {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #ff9800; 
+    color: white;
+    font-weight: bold;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#reminder-close-btn {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: none;
+    transform: none;
+}
+
+#reminder-close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Subject Color Styles */
+.subject-color-swatch {
+    display: inline-block;
+    width: 18px; /* Slightly larger */
+    height: 18px;
+    border-radius: 50%;
+    border: 2px dashed #ced4da; /* Slightly better border */
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Notes Icon in Table */
+.notes-indicator {
+    cursor: help; 
+    margin-left: 5px;
+    color: #007bff; 
+    font-size: 1.1em;
+}
+
+/* Styles for the Subject Color Picker UI */
+.color-picker-container {
+    padding: 10px;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #f8f9fa;
+    flex: 1 1 100%; 
+}
+
+.color-option {
+    width: 28px; /* Larger swatches */
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.1s, transform 0.1s;
+}
+
+.color-option:hover {
+    border: 2px solid #333;
+    transform: scale(1.05);
+}
+
+.color-option.selected {
+    border: 4px solid #007bff; /* Primary blue highlight for selection */
+}
+
+/* Apply color bar to the task rows for easy visibility */
+#assessment-table tbody tr {
+    border-left: 5px solid transparent; 
+    transition: border-left 0.2s;
+}
+
+/* Overdue and Urgent task styles (for Notification feature) */
+.overdue {
+    background-color: #f8d7da; /* Light red */
+    border-left-color: #dc3545 !important;
+}
+.urgent {
+    background-color: #fff3cd; /* Light yellow */
+    border-left-color: #ffc107 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #profile-controls {
+        position: static;
+        transform: none;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    
+    header {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #assessment-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #assessment-form input,
+    #assessment-form button {
+        min-width: 100%;
+    }
+    
+    #controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #filter-controls {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    #assessment-table, #calendar-grid {
+        font-size: 0.85em;
+    }
+}
